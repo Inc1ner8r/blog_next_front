@@ -4,7 +4,7 @@ import "./blogs.scss";
 import { cookies } from "next/headers";
 
 const getData = async () => {
-  const response: Response = await fetch(`http://localhost:8080/getUsers`, {
+  const response: Response = await fetch(`http://localhost:8080/getBlogs`, {
     method: "GET",
   });
   return response.json();
