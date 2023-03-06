@@ -6,11 +6,9 @@ function Login() {
   const [formData, setformData] = useState({ username: "", password: "" });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setformData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData.username);
   };
-  const login: any = async (e: any) => {
+  const login: any = (e: any) => {
     e.preventDefault();
-    console.log(formData.username);
 
     const postData = async () => {
       const data = {
@@ -18,15 +16,15 @@ function Login() {
         password: formData.password,
       };
 
-      const response = await fetch("http://localhost:8080/login", {
+      const response: Response = await fetch("http://localhost:8080/login", {
         method: "POST",
         body: JSON.stringify(data),
       });
-      // return response.json();
+      return response.json();
     };
-    // postData().then((data) => {
-    //   alert(data.message);
-    // });
+    postData().then((data) => {
+      alert(data.message);
+    });
   };
 
   return (
